@@ -26,10 +26,10 @@ class App():
             height= '100%'
             )
 
-    def lerJson(self):
+    def importarMapa(self):
         pass
 
-    def gravarArquivoJson(self):
+    def exportarMapa(self):
         pass
     
     def marcarMapa(self):
@@ -56,10 +56,10 @@ class App():
         self.mapa.save(f'{self.nome}.html')
 
     def abrirMapa(self):
-        self.mapa
+        self.mapa # mudar para fazer ir para url do mapa salvo
 
     def renomearMapa(self):
-        self.nome = input("\nDigite o novo nome desse mapa: ")
+        self.nome = input("\nDigite o novo nome desse mapa: ") # basicamente cria um nome arquivo html
 
     def opcoes(self):
         resposta = int(input(
