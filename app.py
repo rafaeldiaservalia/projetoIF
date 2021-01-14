@@ -19,11 +19,12 @@ class App():
     def gerarMapa(self):
         self.nome = input('Digite o nome desse mapa: ')
         self.mapa = folium.Map(
-            min_zoom= 3,
-            world_copy_jump = True,
-            control_scale= True,
-            width= '100%' ,
-            height= '100%'
+            location=[-20.237705326687376, -41.50570010265251],
+            zoom_start=18,
+            world_copy_jump=True,
+            control_scale=True,
+            width='100%',
+            height='100%'
             )
 
     def importarMapa(self):
