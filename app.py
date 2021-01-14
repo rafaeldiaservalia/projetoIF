@@ -27,7 +27,30 @@ class App():
             )
 
     def importarMapa(self):
-        pass
+        # abre arquivo json para leitura
+        with open('censo.json', 'r') as arquivo:
+            dicionario = json.load(arquivo)
+            # percorre os objetos no arquivo json
+            for chave, dados in dicionario.items():
+                self.lat = (str(dados[0]))
+                self.long = (str(dados[1]))
+                self.dap = (int(dados[2]))
+                self.altura = (int(dados[3]))
+                self.familia = (str(dados[4]))
+                self.especie = (str(dados[5]))
+                folium.CircleMarker(
+                    [self.lat, self.long],
+                    radius=1,
+                    tooltip=f'<b>{chave}</b>',
+                    popup=(
+                        f'<b>DAP:</b> <i>{self.dap / 100}m</i>\n'
+                        f'<b>Altura:</b> <i>{self.altura / 100}m</i>\n'
+                        f'<b>Familia:</b> <i>{self.familia}</i>\n'
+                        f'<b>Espécia:</b> <i>{self.especie}</i>'
+                    )
+                ).add_to(self.mapa)
+        # salva o mapa
+        self.mapa.save(f'{self.nome}.html')
 
     def exportarMapa(self):
         pass
@@ -68,7 +91,8 @@ class App():
             '<2> para salvar mapa\n'
             '<3> para abrir mapa\n'
             '<4> para renomear mapa\n'
-            '<5> para sair\n'
+            '<5> para importar dados e gerar mapa\n'
+            '<6> para sair\n'
             ))
         return resposta
 
@@ -88,4 +112,7 @@ class App():
                 self.renomearMapa()
                 print('\nMapa renomeado com sucesso\n')
             if escolha == 5:
+                self.importarMapa()
+                print('\nImportação realizada com sucesso\n')
+            if escolha == 6:
                 return
