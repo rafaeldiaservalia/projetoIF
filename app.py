@@ -44,6 +44,7 @@ class App():
                     radius=1,
                     tooltip=f'<b>{chave}</b>',
                     popup=(
+                        f'<b>Indicador:</b> {chave}\n'
                         f'<b>DAP:</b> <i>{self.dap / 100}m</i>\n'
                         f'<b>Altura:</b> <i>{self.altura / 100}m</i>\n'
                         f'<b>Familia:</b> <i>{self.familia}</i>\n'
